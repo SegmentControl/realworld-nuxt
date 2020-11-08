@@ -1,51 +1,43 @@
 [
   {
     "path": "/",
-    "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/layout",
+    "component": "/Users/rh_flower/Desktop/tt/realworld-nuxt/pages/layout",
     "children": [
       {
         "name": "home",
         "path": "",
-        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/home",
-        "_name": "_a0145294"
+        "component": "/Users/rh_flower/Desktop/tt/realworld-nuxt/pages/home"
       },
       {
         "path": "/login",
         "name": "login",
-        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/login",
-        "_name": "_4efd4872"
+        "component": "/Users/rh_flower/Desktop/tt/realworld-nuxt/pages/login"
       },
       {
         "path": "/register",
         "name": "register",
-        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/login",
-        "_name": "_4efd4872"
+        "component": "/Users/rh_flower/Desktop/tt/realworld-nuxt/pages/login"
       },
       {
         "path": "/profile/:username",
         "name": "profile",
-        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/profile",
-        "_name": "_5df3c472"
+        "component": "/Users/rh_flower/Desktop/tt/realworld-nuxt/pages/profile"
       },
       {
         "path": "/settings",
         "name": "settings",
-        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/settings",
-        "_name": "_1c764b0c"
+        "component": "/Users/rh_flower/Desktop/tt/realworld-nuxt/pages/settings"
       },
       {
         "path": "/editor/:slug?",
         "name": "editor",
-        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/editor",
-        "_name": "_f7c02cf8"
+        "component": "/Users/rh_flower/Desktop/tt/realworld-nuxt/pages/editor"
       },
       {
         "path": "/article/:slug",
         "name": "article",
-        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/article",
-        "_name": "_44be07bf"
+        "component": "/Users/rh_flower/Desktop/tt/realworld-nuxt/pages/article"
       }
-    ],
-    "_name": "_e022797e"
+    ]
   }
 ]

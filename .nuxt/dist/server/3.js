@@ -120,8 +120,8 @@ const addComment = (slug, body) => {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./pages/home/index.vue?vue&type=template&id=6adf0256&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"home-page"},[_vm._ssrNode("<div class=\"banner\"><div class=\"container\"><h1 class=\"logo-font\">conduit</h1> <p>A place to share your knowledge.</p></div></div> "),_vm._ssrNode("<div class=\"container page\">","</div>",[_vm._ssrNode("<div class=\"row\">","</div>",[_vm._ssrNode("<div class=\"col-md-9\">","</div>",[_vm._ssrNode("<div class=\"feed-toggle\">","</div>",[_vm._ssrNode("<ul class=\"nav nav-pills outline-active\">","</ul>",[(_vm.user)?_vm._ssrNode("<li"+(_vm._ssrClass("nav-item",{active: _vm.tab === 'your_feed'}))+">","</li>",[_c('nuxt-link',{staticClass:"nav-link",attrs:{"to":{
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./pages/home/index.vue?vue&type=template&id=fa2deef0&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"home-page"},[_vm._ssrNode("<div class=\"banner\"><div class=\"container\"><h1 class=\"logo-font\">哈哈1</h1> <p>A place to share your knowledge.</p></div></div> "),_vm._ssrNode("<div class=\"container page\">","</div>",[_vm._ssrNode("<div class=\"row\">","</div>",[_vm._ssrNode("<div class=\"col-md-9\">","</div>",[_vm._ssrNode("<div class=\"feed-toggle\">","</div>",[_vm._ssrNode("<ul class=\"nav nav-pills outline-active\">","</ul>",[(_vm.user)?_vm._ssrNode("<li"+(_vm._ssrClass("nav-item",{active: _vm.tab === 'your_feed'}))+">","</li>",[_c('nuxt-link',{staticClass:"nav-link",attrs:{"to":{
                   name: 'home',
                   query: {
                     tab: 'your_feed'
@@ -166,7 +166,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/home/index.vue?vue&type=template&id=6adf0256&
+// CONCATENATED MODULE: ./pages/home/index.vue?vue&type=template&id=fa2deef0&
 
 // EXTERNAL MODULE: ./api/article.js
 var api_article = __webpack_require__(27);
@@ -416,7 +416,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   false,
   null,
   null,
-  "07b02f86"
+  "506744e8"
   
 )
 
