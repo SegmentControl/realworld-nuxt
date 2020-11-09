@@ -1,2 +1,2 @@
-# realworld-nuxtjs
+# realworld-nuxt
  
