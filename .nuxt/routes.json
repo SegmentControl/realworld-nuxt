@@ -1,0 +1,43 @@
+[
+  {
+    "path": "/",
+    "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\layout",
+    "children": [
+      {
+        "name": "home",
+        "path": "/",
+        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\home"
+      },
+      {
+        "name": "login",
+        "path": "/login",
+        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login"
+      },
+      {
+        "name": "register",
+        "path": "/register",
+        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login"
+      },
+      {
+        "name": "profile",
+        "path": "/profile/:username",
+        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\profile"
+      },
+      {
+        "name": "settings",
+        "path": "/settings",
+        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\settings"
+      },
+      {
+        "name": "editor",
+        "path": "/editor/:slug?",
+        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\editor"
+      },
+      {
+        "name": "article",
+        "path": "/article/:slug?",
+        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\article"
+      }
+    ]
+  }
+]
