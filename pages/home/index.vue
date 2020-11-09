@@ -12,63 +12,103 @@
         <div class="col-md-9">
           <div class="feed-toggle">
             <ul class="nav nav-pills outline-active">
-              <li v-if="user" class="nav-item">
-                <nuxt-link :class="['nav-link',{active:tab === 'you_feed'}]" :to="{name:'home',query:{tab:'your_feed'}}" exact>Your Feed</nuxt-link>
+              <li v-if="user" class="nav-item" :class="{active: tab === 'your_feed'}">
+                <nuxt-link
+                  class="nav-link"
+                  :to="{
+                    name: 'home',
+                    query: {
+                      tab: 'your_feed'
+                    }
+                  }"
+                  exact
+                >Your Feed</nuxt-link>
               </li>
-              <li class="nav-item">
-                <nuxt-link :class="['nav-link',{active:tab === 'global_feed'}]" :to="{name:'home'}" exact>Global Feed</nuxt-link>
+              <li class="nav-item" :class="{active: tab === 'global_feed'}">
+                <nuxt-link
+                  class="nav-link"
+                  :to="{
+                    name: 'home'
+                  }"
+                  exact
+                >Global Feed</nuxt-link>
               </li>
-              <li class="nav-item" v-if="tag">
-                <a :class="['nav-link',{active:tab==='tag'}]" href="#">#{{tag}}</a>
+              <li v-if="tag" class="nav-item" :class="{active: tab === 'tag'}">
+                <nuxt-link
+                  class="nav-link"
+                  :to="{
+                    name: 'home',
+                    query: {
+                      tab: 'tag',
+                      tag: tag
+                    }
+                  }"
+                  exact
+                > # {{ tag }} </nuxt-link>
               </li>
             </ul>
           </div>
 
-          <div class="article-preview" v-for="article  in articles" :key="article.slug">
+          <div
+            class="article-preview"
+            v-for="article in articles"
+            :key="article.slug"
+          >
             <div class="article-meta">
               <nuxt-link
                 :to="{
-                name:'profile',
-                params:{username:article.author.username}
-              }"
-              >
-                <img :src="article.author.image" />
-              </nuxt-link>
+                  name: 'profile',
+                  params: {
+                    username: article.author.username
+                  }
+                }"
+                ><img :src="article.author.image"
+              /></nuxt-link>
               <div class="info">
                 <nuxt-link
-                  class="author"
                   :to="{
-                    name:'profile',
-                    params:{username:article.author.username}
+                    name: 'profile',
+                    params: {
+                      username: article.author.username
+                    }
                   }"
+                  class="author"
                 >{{article.author.username}}</nuxt-link>
-                <span class="date">{{article.createdAt | date('MMM DD,YYYY')}}</span>
+                <span class="date">{{article.createdAt | date('MMM DD, YYYY')}}</span>
               </div>
               <button
                 class="btn btn-outline-primary btn-sm pull-xs-right"
-                :class="{active:article.favorited}"
+                :class="{active: article.favorited}"
                 @click="onFavorite(article)"
-               :disabled="article.favoriteDisabled"
+                :disabled="article.favoriteDisabled"
               >
-                <i class="ion-heart"></i>
-                {{article.favoritesCount}}
+                <i class="ion-heart"></i> {{article.favoritesCount}}
               </button>
             </div>
-            <nuxt-link :to="{name:'article',params:{slug:article.slug}}" class="preview-link">
+            <nuxt-link :to="{
+              name: 'article',
+              params: {
+                slug: article.slug
+              }
+            }" class="preview-link">
               <h1>{{article.title}}</h1>
               <p>{{article.description}}</p>
               <span>Read more...</span>
             </nuxt-link>
           </div>
+
           <!-- 分页 -->
           <nav>
             <ul class="pagination">
-              <li
-                v-for="item in totalPage"
-                :key="item"
-                :class="['page-item', {active:item===page}]"
-              >
-                <nuxt-link class="page-link" :to="{name:'home',query:{page:item,tag,tab}}">{{item}}</nuxt-link>
+              <li class="page-item" :class="{active: item === page}" v-for="item in totalPage" :key="item">
+                <nuxt-link class="page-link" :to="{
+                  name: 'home',
+                  query: {
+                    page: item,
+                    tag: $route.query.tag,
+                    tab
+                  }
+                }">{{item}}</nuxt-link>
               </li>
             </ul>
           </nav>
@@ -80,11 +120,17 @@
 
             <div class="tag-list">
               <nuxt-link
+                :to="{
+                  name: 'home',
+                  query: {
+                    tag: item,
+                    tab: 'tag'
+                  }
+                }"
                 class="tag-pill tag-default"
-                v-for="(tag,i) in tags"
-                :key="i"
-                :to="{name:'home',query:{tag,tab:'tag'}}"
-              >{{tag}}</nuxt-link>
+                v-for="item in tags"
+                :key="item"
+              >{{item}}</nuxt-link>
             </div>
           </div>
         </div>
@@ -94,74 +140,66 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import {
-  getArticles,
-  getYourFeedArticles,
-  addFavorite,
-  deleteFavorite,
-} from "@/api/article.js";
-import { getTags } from "@/api/tag.js";
+import { getArticles, getYourFeedArticles, addFavorite, deleteFavorite } from '@/api/article'
+import { getTags } from '@/api/tag'
+import { mapState } from 'vuex'
 export default {
-  name: "HomeIndex",
-  watchQuery: ["page", "tag", "tab"],
-  async asyncData({ query }) {
-    try {
-      const page = Number.parseInt(query.page || 1);
-      const limit = 10;
-      const tab = query.tab || "global_feed";
-      const tag = query.tag;
-      const loadArticles =
-        tab !== "your_feed" ? getArticles : getYourFeedArticles;
-
-      const [articleRes, tagRes] = await Promise.all([
-        loadArticles({ limit, offset:(page - 1) * limit, tag }),
-        getTags(),
-      ]);
-      const { articles, articlesCount } = articleRes.data;
-      const { tags } = tagRes.data;
-      articles.forEach((article) => (article.favoriteDisabled = false));
-      return {
+  name: "HomePage",
+  watchQuery: ['page', 'tag', 'tab'],
+  async asyncData ({ query }) {
+    const page = Number.parseInt(query.page || 1)
+    const limit = 20
+    const tab = query.tab || 'global_feed'
+    const tag = query.tag
+    const loadArticles = tab !== 'your_feed'
+    ? getArticles
+    : getYourFeedArticles
+    const [articleRes, tagRes] = await Promise.all([
+      loadArticles({
         limit,
-        page,
-        articles,
-        articlesCount,
-        tags,//标签集合
-        tab,//选项卡
-        tag,//标签
-      };
-    } catch (err) {
-      console.dir(err);
+        offset: (page - 1) * limit,
+        tag: query.tag
+      }),
+      getTags()
+    ])
+    const { articles, articlesCount } = articleRes.data
+    const { tags } = tagRes.data
+
+    articles.forEach(article => article.favoriteDisabled = false)
+
+    return {
+      limit,
+      page,
+      articles,
+      articlesCount,
+      tags,
+      tab,
+      tag
     }
   },
   computed: {
-    totalPage() {
-      return Math.ceil(this.articlesCount / this.limit);
+    totalPage () {
+      return Math.ceil(this.articlesCount / this.limit)
     },
-    ...mapState(["user"])
+    ...mapState(['user'])
   },
   methods: {
-    async onFavorite(article) {
-      if (!this.user) return this.$router.push("/login");
-      article.favoriteDisabled = true; // 禁用点击
-      if (article.favorited) {
+    async onFavorite (article) {
+      if (!this.user ) return this.$router.push('/login')
+      article.favoriteDisabled = true // 禁用点击
+      if(article.favorited) {
         // 取消点赞
-        await deleteFavorite(article.slug);
-        article.favorited = false;
-        article.favoritesCount -= 1;
+        await deleteFavorite(article.slug)
+        article.favorited = false
+        article.favoritesCount -= 1
       } else {
         // 添加点赞
-        await addFavorite(article.slug);
-        article.favorited = true;
-        article.favoritesCount += 1;
+        await addFavorite(article.slug)
+        article.favorited = true
+        article.favoritesCount += 1
       }
-      article.favoriteDisabled = false; // 允许点击
-    },
-  },
-  components: {},
+      article.favoriteDisabled = false // 允许点击
+    }
+  }
 };
 </script>
-
-<style scoped>
-</style>
-

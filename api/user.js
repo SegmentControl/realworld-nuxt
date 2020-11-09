@@ -1,10 +1,10 @@
-import {request} from "@/plugins/request.js"
+import {request} from '@/plugins/request'
 
 // 用户登录
-export const login = data=>{
+export const login = data => {
   return request({
-    method:'POST',
-    url:'/api/users/login',
+    method: 'POST',
+    url: '/api/users/login',
     data
   })
 }
@@ -17,7 +17,6 @@ export const register = data => {
     data
   })
 }
-
 // 修改用户资料
 export const updateUser = data => {
   return request({

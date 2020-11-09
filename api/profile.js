@@ -1,4 +1,4 @@
-import {request} from "@/plugins/request"
+import {request} from '@/plugins/request'
 
 // 获取用户信息
 export const getProfiles = (username) => {
@@ -7,3 +7,4 @@ export const getProfiles = (username) => {
     url: `/api/profiles/${username}`,
   })
 }
+

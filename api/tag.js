@@ -1,5 +1,9 @@
-import {request} from "@/plugins/request"
+import {request} from '@/plugins/request'
 
-export const getTags = ()=>{
-  return request.get('/api/tags')
+// 获取文章标签列表
+export const getTags = () => {
+  return request({
+    method: 'GET',
+    url: '/api/tags',
+  })
 }

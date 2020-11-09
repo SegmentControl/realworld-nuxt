@@ -1,5 +1,5 @@
 <template>
- <div class="settings-page">
+  <div class="settings-page">
   <div class="container page">
     <div class="row">
 
@@ -15,93 +15,97 @@
         <form>
           <fieldset>
               <fieldset class="form-group">
-                <input class="form-control" type="text" v-model="user.image" placeholder="URL of profile picture">
+                <input class="form-control" type="url" placeholder="URL of profile picture" v-model="user.image" required>
               </fieldset>
               <fieldset class="form-group">
-                <input class="form-control form-control-lg" v-model="user.username" type="text" placeholder="Your Name" >
+                <input class="form-control form-control-lg" type="text" placeholder="Your Name" v-model="user.username" required>
               </fieldset>
               <fieldset class="form-group">
-                <textarea class="form-control form-control-lg" v-model="user.bio" rows="8" placeholder="Short bio about you"></textarea>
+                <textarea class="form-control form-control-lg" rows="8" placeholder="Short bio about you" v-model="user.bio" required></textarea>
               </fieldset>
               <fieldset class="form-group">
-                <input class="form-control form-control-lg" v-model="user.email" type="email" placeholder="Email" >
+                <input class="form-control form-control-lg" type="email" placeholder="Email" v-model="user.email" required>
               </fieldset>
               <fieldset class="form-group">
-                <input class="form-control form-control-lg" type="password" placeholder="Password">
+                <input class="form-control form-control-lg" type="password" placeholder="Password" v-model="user.password" required>
               </fieldset>
-              <button class="btn btn-lg btn-primary pull-xs-right" v-on:click.prevent="UpdateSettings" :disabled="updateDisabled">
+              <button class="btn btn-lg btn-primary pull-xs-right" @click.prevent="handleSubmit">
                 Update Settings
               </button>
           </fieldset>
         </form>
-        <hr>
-        <button class="btn btn-outline-danger" @click.prevent="logout">
+        <hr/>
+        <button class="btn btn-outline-danger" @click="logout">
           Or click here to logout.
         </button>
       </div>
+
     </div>
   </div>
 </div>
 </template>
 
 <script>
-const Cookie = process.client?require('js-cookie'):''
-import {mapState} from "vuex"
+const Cookie = process.client ? require('js-cookie'): undefined
 import { updateUser } from '@/api/user'
+import { mapState } from 'vuex'
 
 export default {
-  middleware:['authenticated'],
-  name: 'settingsIndex',
+  name: 'Settings',
+  middleware: 'authenticated',
   data () {
     return {
-       user: {
+      user: {
         bio: '',
         email: '',
         image: '',
         password: '',
         username: ''
       },
-      errors:{},
-      updateDisabled:false
+      errors: {} // 错误信息
     }
   },
-  computed:{
-    ...mapState({storeUser:'user'})
+  computed: {
+    ...mapState({storeUser: 'user'})
   },
-  mounted(){
-    const { bio,email,image,password,username} = this.storeUser
-    this.user = {bio,email,image,password,username}
+  
+  mounted () {
+    this.user.bio = this.storeUser.bio
+    this.user.email = this.storeUser.email
+    this.user.image = this.storeUser.image
+    this.user.password = this.storeUser.password
+    this.user.username = this.storeUser.username
   },
+
   methods: {
-    async UpdateSettings(){
-      try{
-        this.updateDisabled=true
-        const {data} = await updateUser({user:this.user})
-        if(data&&data.user){
-          // 更新客户端缓存数据
-          this.$store.commit('setUser',data.user)
-          // 更新服务端数据持久化
-          Cookie.set('user',data.user)
-          this.$router.push(`/profile/${data.user.username}`)
-        }else{
-          this.errors = {error:'出错了'}
-        }
-        this.updateDisabled=false
-      }catch(err){
-        this.errors = err.response.data.errors
-        this.updateDisabled=false
+    async handleSubmit () {
+      try {
+        const { data } = await updateUser({
+          user: this.user
+        })
+
+        console.log('data', data)
+
+        // 更新用户的登录状态
+        this.$store.commit('setUser', data.user)
+
+        // 为了防止刷新页面数据丢失，数据需要持久化
+        Cookie.set('user', data.user)
+
+        this.$router.push(`/profile/${data.user.username}`)
+      } catch (e) {
+        this.errors = e.response.data.errors
       }
     },
-    logout(){
-      // 删除客户端缓存数据
-      this.$store.commit('setUser',null)
-      // 删除服务端数据持久化
-      Cookie.set('user',null)
+    logout () {
+      // 删除用户的登录状态
+      this.$store.commit('setUser', null)
+
+      // 删除数据持久化
+      Cookie.set('user', null)
+      
       this.$router.push('/')
     }
-  },
-  components: {
-
   }
 }
 </script>

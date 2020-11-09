@@ -1,43 +1,51 @@
 [
   {
     "path": "/",
-    "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\layout",
+    "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/layout",
     "children": [
       {
         "name": "home",
-        "path": "/",
-        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\home"
+        "path": "",
+        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/home",
+        "_name": "_a0145294"
       },
       {
-        "name": "login",
         "path": "/login",
-        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login"
+        "name": "login",
+        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/login",
+        "_name": "_4efd4872"
       },
       {
-        "name": "register",
         "path": "/register",
-        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login"
+        "name": "register",
+        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/login",
+        "_name": "_4efd4872"
       },
       {
-        "name": "profile",
         "path": "/profile/:username",
-        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\profile"
+        "name": "profile",
+        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/profile",
+        "_name": "_5df3c472"
       },
       {
-        "name": "settings",
         "path": "/settings",
-        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\settings"
+        "name": "settings",
+        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/settings",
+        "_name": "_1c764b0c"
       },
       {
-        "name": "editor",
         "path": "/editor/:slug?",
-        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\editor"
+        "name": "editor",
+        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/editor",
+        "_name": "_f7c02cf8"
       },
       {
+        "path": "/article/:slug",
         "name": "article",
-        "path": "/article/:slug?",
-        "component": "C:\\\\Users\\\\Dell\\\\Desktop\\\\LG\\\\1_Vdeio_code\\\\part 3 · Vue.js 框架源码与进阶\\\\03-03-框架-vuex-ssr\\\\code\\\\realworld-nuxtjs\\\\pages\\\\article"
+        "component": "/Users/rh_flower/Desktop/realworld-nuxtjs/pages/article",
+        "_name": "_44be07bf"
       }
-    ]
+    ],
+    "_name": "_e022797e"
   }
 ]
